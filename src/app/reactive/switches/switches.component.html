@@ -1,7 +1,7 @@
 <h2>Reactivos: Switches</h2>
 <hr>
 
-<form>
+<form [formGroup]="miFormulario">
 
     <!-- Radio -->
     <div class="row mb-3">
@@ -9,12 +9,12 @@
         <div class="col-sm-9">
             <div class="form-check">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" value="M" name="radioGenero" id="radioMasculino">
+                    <input class="form-check-input" type="radio" value="M" id="radioMasculino" formControlName="genero">
                     <label for="radioMasculino" class="form-check-label">Masculino</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" value="F" name="radioGenero" id="radioFemenino">
+                    <input class="form-check-input" type="radio" value="F" id="radioFemenino" formControlName="genero">
                     <label for="radioFemenino" class="form-check-label">Femenino</label>
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <label class="col-sm-3 col-form-label">Notificaciones</label>
             <div class="col-sm-9">
                 <div class="form-check form-switch mt-2">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchcheckChecked">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchcheckChecked" formControlName="notificaciones">
                     <label for="flexSwitchcheckChecked" class="form-check-label">Quiero recibir notificaciones</label>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             <label class="col-sm-3 col-form-label"></label>
             <div class="col-sm-9">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" id="flexCheckDefault" formControlName="condiciones">
                     <label for="flexCheckDefault" class="form-check-label">
                         Términos y Condiciones de Uso
                     </label>
@@ -52,12 +52,20 @@
                 </button>
             </div>
         </div>
-
-
-
-
-
     </div>
-
-
 </form>
+
+
+<h5>Valor del formulario</h5>
+<pre>{{miFormulario.value | json}}</pre>
+<br>
+
+<h5>Persona</h5>
+<pre>{{persona | json}}</pre>
+
+<h5>Valid</h5>
+<pre>{{miFormulario.valid}}</pre>
+<br>
+
+<!-- <h5>Términos</h5> -->
+<!-- <pre>{{persona.notificaciones}}</pre> -->

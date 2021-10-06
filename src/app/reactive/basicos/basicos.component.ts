@@ -1,16 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-basicos',
   templateUrl: './basicos.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class BasicosComponent implements OnInit {
+export class BasicosComponent {
+  // miFormulario: FormGroup = new FormGroup({
+  //   nombre: new FormControl('RTX 4080ti'),
+  //   precio: new FormControl(1500),
+  //   existencias: new FormControl(5),
+  // });
 
-  constructor() { }
+  miFormulario: FormGroup = this.fb.group({
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    precio: [, [Validators.required, Validators.min(0)]],
+    existencias: [, [Validators.required, Validators.min(0)]],
+  });
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) {}
+
+  campoNoEsValido(campo: string) {
+    return (
+      this.miFormulario.controls[campo].errors &&
+      this.miFormulario.controls[campo].touched
+    );
   }
 
+  guardar() {
+    this.miFormulario.reset();
+  }
 }

@@ -24,9 +24,7 @@ export class DinamicosComponent {
       { id: 2, nombre: 'DeathStranding' },
     ],
   };
-  guardar() {
-    console.log('formulario posteado');
-  }
+  guardar() {}
 
   eliminar(index: number) {
     this.persona.favoritos.splice(index, 1);
