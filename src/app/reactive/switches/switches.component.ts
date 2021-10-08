@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -22,5 +23,16 @@ export class SwitchesComponent implements OnInit {
 
   ngOnInit() {
     this.miFormulario.reset({ ...this.persona, condiciones: false });
+
+    this.miFormulario.valueChanges.subscribe(({ condiciones, ...rest }) => {
+      this.persona = rest;
+    });
+  }
+
+  guardar() {
+    const formValue = { ...this.miFormulario.value };
+    delete formValue.condiciones;
+
+    this.persona = formValue;
   }
 }
